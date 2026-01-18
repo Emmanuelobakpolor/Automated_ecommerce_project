@@ -1,15 +1,23 @@
 [build]
-  command = "npm run build:client"
-  functions = "netlify/functions"
-  publish = "dist/spa"
+  # The directory where the build command is run.
+  base = "client"
 
+  # The directory that contains the build output.
+  # For Vite projects, this is usually 'dist'. For Create React App, it is 'build'.
+  publish = "dist"
 
-[functions]
-  external_node_modules = ["express"]
-  node_bundler = "esbuild"
-  
+  # The command to build your application.
+  command = "npm install && npm run build"
+
+# Handle Single Page Application (SPA) routing so direct links work.
 [[redirects]]
-  force = true
-  from = "/api/*"
+  from = "/*"
+  to = "/index.html"
   status = 200
-  to = "/.netlify/functions/api/:splat"
+
+# Example API Proxy (Uncomment and adjust if you have a deployed backend)
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://your-backend-api.com/api/:splat"
+#   status = 200
+#   force = true
