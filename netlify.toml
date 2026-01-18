@@ -1,13 +1,12 @@
 [build]
-  # The directory where the build command is run.
-  base = "client"
+  # The directory where the build command is run. Defaults to root.
 
   # The directory that contains the build output.
   # For Vite projects, this is usually 'dist'. For Create React App, it is 'build'.
   publish = "dist"
 
   # The command to build your application.
-  command = "npm install && npm run build"
+  command = "npm install && npm run build:client"
 
 # Handle Single Page Application (SPA) routing so direct links work.
 [[redirects]]
